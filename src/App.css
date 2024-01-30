@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,23 @@
   to {
     transform: rotate(360deg);
   }
+} */
+header,
+footer {
+  background-color: rgb(168, 0, 0);
+  font-size: 20px;
+}
+.list-group-item {
+  background-color: rgb(168, 0, 0) !important;
+  font-size: 20px;
+}
+.card {
+  box-shadow: 11px 11px 11px 0px rgba(0, 0, 0, 0.1);
+  border: none !important;
+}
+
+.fade {
+  background-color: white !important;
+  font-size: 20px;
+  font-weight: 500;
 }
