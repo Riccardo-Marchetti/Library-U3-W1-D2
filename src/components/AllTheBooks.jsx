@@ -6,11 +6,11 @@ import HorrorBooks from "../Data/horror.json";
 
 const AllBooks = () => {
   return (
-    <Container className="mt-4">
-      <Row>
-        {HorrorBooks.map((book) => {
-          return (
-            <>
+    <>
+      <Container className="mt-4">
+        <Row>
+          {HorrorBooks.map((book) => {
+            return (
               <Col
                 key={book.asin}
                 xs={12}
@@ -34,11 +34,11 @@ const AllBooks = () => {
                   </Card.Body>
                 </Card>
               </Col>
-            </>
-          );
-        })}
-      </Row>
-    </Container>
+            );
+          })}
+        </Row>
+      </Container>
+    </>
   );
 };
 
