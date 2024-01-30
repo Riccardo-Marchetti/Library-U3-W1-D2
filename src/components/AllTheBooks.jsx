@@ -12,6 +12,7 @@ const AllBooks = () => {
           return (
             <>
               <Col
+                key={book.asin}
                 xs={12}
                 sm={6}
                 md={4}
@@ -19,7 +20,6 @@ const AllBooks = () => {
                 xl={3}
                 xxl={2}
                 className="mb-4"
-                key={book.asin}
               >
                 <Card style={{ height: "100%" }}>
                   <Card.Img
