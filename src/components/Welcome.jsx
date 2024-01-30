@@ -7,7 +7,7 @@ const WelcomeAllert = () => {
   return (
     <>
       {["secondary"].map((variant) => (
-        <Container key={"al"}>
+        <Container key={"alert"}>
           <Row className=" mt-2">
             <Col sm={12} md={8} xl={6} className="me-auto ms-auto">
               <Alert variant={variant} className="text-center">
