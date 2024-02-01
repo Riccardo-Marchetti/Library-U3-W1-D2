@@ -11,6 +11,7 @@ class ListBook extends Component {
   state = {
     name: "",
   };
+
   render() {
     return (
       <>
@@ -24,11 +25,7 @@ class ListBook extends Component {
                     placeholder="Search"
                     className=" mr-sm-2"
                     value={this.state.name}
-                    onChange={(e) =>
-                      this.setState({
-                        name: e.target.value,
-                      })
-                    }
+                    onChange={(e) => this.setState({ name: e.target.value })}
                   />
                 </Col>
                 <Col xs="auto">
@@ -36,9 +33,17 @@ class ListBook extends Component {
                 </Col>
               </Row>
             </Form>
-            {bookHorror.map((books) => {
-              return <CustomSingleBook bookHorror1={books} key={books.asin} />;
-            })}
+            {bookHorror
+              .filter((books) =>
+                books.title
+                  .toLowerCase()
+                  .includes(this.state.name.toLowerCase())
+              )
+              .map((books) => {
+                return (
+                  <CustomSingleBook bookHorror1={books} key={books.asin} />
+                );
+              })}
           </Row>
         </Container>
       </>
