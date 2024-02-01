@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import CustomNavbar from "./components/NavbarComponent";
 import WelcomeAllert from "./components/Welcome";
 import CustomFooter from "./components/MyFooter";
+import FormComment from "./components/AddComment";
 import ListBook from "./components/BookList";
 import book from "../src/Data/horror.json";
 
