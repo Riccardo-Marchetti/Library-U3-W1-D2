@@ -1,8 +1,10 @@
-import { Component } from "react";
+import ListGroup from "react-bootstrap/ListGroup";
 
-class CommentSingle extends Component {
-  render() {
-    return;
-  }
-}
+const CommentSingle = (props) => {
+  return (
+    <ListGroup>
+      <ListGroup.Item></ListGroup.Item>
+    </ListGroup>
+  );
+};
 export default CommentSingle;

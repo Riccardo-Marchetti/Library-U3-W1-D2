@@ -33,21 +33,14 @@ class AreaComment extends Component {
       });
   };
   componentDidMount() {
-    console.log("sono componentDiMount");
     this.fetchComment();
   }
   render() {
-    console.log(
-      "sono render! valore di this.state.comment:",
-      this.state.comments
-    );
     return (
-      <>
-        <div>
-          <ListComment list={this.state.comments} />
-          <FormComment as={this.props.comm} />
-        </div>
-      </>
+      <div>
+        <ListComment list={this.state.comments} />
+        <FormComment as={this.props.comm} />
+      </div>
     );
   }
 }

@@ -6,12 +6,10 @@ class FormComment extends Component {
     comments: {
       comment: "",
       rate: 1,
-      elementId: this.props.comm,
+      elementId: this.props.as,
     },
   };
   commentSubmit = (e) => {
-    e.preventDefault();
-    console.log("stato corrente", this.state.comments);
     fetch("https://striveschool-api.herokuapp.com/api/comments/", {
       method: "POST",
       body: JSON.stringify(this.state.comments),
@@ -45,6 +43,8 @@ class FormComment extends Component {
         className="pt-4"
         onSubmit={(e) => {
           e.preventDefault();
+          console.log(this.state.comments);
+          this.commentSubmit();
         }}
       >
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -87,9 +87,7 @@ class FormComment extends Component {
             <option>5</option>
           </Form.Select>
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+        <Button type="submit">Submit</Button>
       </Form>
     );
   }
