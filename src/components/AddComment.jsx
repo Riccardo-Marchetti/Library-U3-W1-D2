@@ -6,11 +6,11 @@ class FormComment extends Component {
     comments: {
       comment: "",
       rate: 1,
-      elementId: this.props.as,
+      elementId: this.props.asin,
     },
   };
   commentSubmit = (e) => {
-    fetch("https://striveschool-api.herokuapp.com/api/comments/", {
+    fetch("https://striveschool-api.herokuapp.com/api/comments", {
       method: "POST",
       body: JSON.stringify(this.state.comments),
       headers: {
@@ -37,6 +37,18 @@ class FormComment extends Component {
         console.log(err);
       });
   };
+
+  componentDidUpdate(prevProp, prevState) {
+    if (prevProp.asin !== this.props.asin) {
+      this.setState({
+        comments: {
+          ...this.state.comments,
+          elementId: this.props.asin,
+        },
+      });
+    }
+  }
+
   render() {
     return (
       <Form

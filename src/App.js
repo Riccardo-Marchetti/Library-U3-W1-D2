@@ -5,7 +5,7 @@ import WelcomeAllert from "./components/Welcome";
 import CustomFooter from "./components/MyFooter";
 import FormComment from "./components/AddComment";
 import ListBook from "./components/BookList";
-import book from "../src/Data/horror.json";
+import horror from "../src/Data/horror.json";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <WelcomeAllert />
       </header>
       <main>
-        <ListBook jsonbook={book} />
+        <ListBook books={horror} />
       </main>
       <footer>
         <CustomFooter />

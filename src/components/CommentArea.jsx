@@ -6,9 +6,10 @@ class AreaComment extends Component {
   state = {
     comments: [],
   };
+
   fetchComment = () => {
     fetch(
-      "https://striveschool-api.herokuapp.com/api/comments/" + this.props.comm,
+      "https://striveschool-api.herokuapp.com/api/comments/" + this.props.asin,
       {
         headers: {
           Authorization:
@@ -32,14 +33,21 @@ class AreaComment extends Component {
         console.log(err);
       });
   };
-  componentDidMount() {
-    this.fetchComment();
+
+  // componentDidMount() {
+  //   this.fetchComment();
+  // }
+
+  componentDidUpdate(prevProp, prevState) {
+    if (prevProp.asin !== this.props.asin) {
+      this.fetchComment();
+    }
   }
   render() {
     return (
       <div>
         <ListComment list={this.state.comments} />
-        <FormComment as={this.props.comm} />
+        <FormComment asin={this.props.asin} />
       </div>
     );
   }

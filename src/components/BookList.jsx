@@ -5,11 +5,15 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import CustomSingleBook from "./SingleBook";
 import { Component } from "react";
-import bookHorror from "../Data/horror.json";
+import AreaComment from "./CommentArea";
 
 class ListBook extends Component {
   state = {
     name: "",
+    selected: false,
+  };
+  changeAsin = (as) => {
+    this.setState({ selected: as });
   };
 
   render() {
@@ -17,33 +21,44 @@ class ListBook extends Component {
       <>
         <Container className="pt-4">
           <Row>
-            <Form>
-              <Row>
-                <Col xs="auto">
-                  <Form.Control
-                    type="text"
-                    placeholder="Search"
-                    className=" mr-sm-2"
-                    value={this.state.name}
-                    onChange={(e) => this.setState({ name: e.target.value })}
-                  />
-                </Col>
-                <Col xs="auto">
-                  <Button type="submit">Cerca</Button>
+            <Col md={8}>
+              <Row className="justify-content-center mt-5">
+                <Col xs={12} md={4} className="text-center">
+                  <Form.Group>
+                    <Form.Control
+                      type="search"
+                      placeholder="Cerca un libro"
+                      value={this.state.name}
+                      onChange={(e) => this.setState({ name: e.target.value })}
+                    />
+                  </Form.Group>
                 </Col>
               </Row>
-            </Form>
-            {bookHorror
-              .filter((books) =>
-                books.title
-                  .toLowerCase()
-                  .includes(this.state.name.toLowerCase())
-              )
-              .map((books) => {
-                return (
-                  <CustomSingleBook bookHorror1={books} key={books.asin} />
-                );
-              })}
+              <Row className="g-2 mt-3 ">
+                {this.props.books
+                  .filter((books) =>
+                    books.title
+                      .toLowerCase()
+                      .includes(this.state.name.toLowerCase())
+                  )
+                  .map((books) => {
+                    return (
+                      <Col xs={12} md={3} key={books.asin}>
+                        <CustomSingleBook
+                          book={books}
+                          selected={this.state.selected}
+                          changeAsin={this.changeAsin}
+                        />
+                      </Col>
+                    );
+                  })}
+              </Row>
+            </Col>
+            <Col md={4} className="mt-5">
+              {this.state.asin !== "" && (
+                <AreaComment asin={this.state.selected} />
+              )}
+            </Col>
           </Row>
         </Container>
       </>
